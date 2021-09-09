@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">	
-
 	<script src="jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script id="MathJax-script" async src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
 	<script>
 	MathJax = {
@@ -18,6 +18,14 @@
 	};
 	</script>
 	<script>var answer={};</script>
+	<script>
+		//console.log(($.cookie("type")!="guest" && $.cookie("type")!="user"));
+		//console.log($.cookie("id")==undefined);//=="undefined");
+		if(($.cookie("type")!="guest" && $.cookie("type")!="user")|| $.cookie("id")==undefined){
+			alert("您未登录, 请先进行登录!");
+			$(location).attr("href", "/app/XRD/HTML/login/login.html");
+		}
+	</script>
 </head>
 <body>
 	<main id="rt-exam-paper" class="flex-shrink-0" role="main">
@@ -33,7 +41,7 @@
 						A. 劳厄法
 					</li>
 					<li class="list-group-item list-group-item-action">
-						B. 粉末多法
+						B. 衍射仪法
 					</li>
 					<li class="list-group-item list-group-item-action">
 						C. 周转晶体法
@@ -58,22 +66,7 @@
 					</li>
 				</ul>
     		    <ul class="list-group list-group-flush" id="3">
-					<li class="list-group-item active yo-bg-main">题目3 M层电子回迁到K层后，多余的能量放射出的特征X射线称( )</li>
-					<li class="list-group-item list-group-item-action">
-						A. \( K\alpha \)
-					</li>
-					<li class="list-group-item list-group-item-action">
-						B. \( K\beta \)
-					</li>
-					<li class="list-group-item list-group-item-action">
-						C. \( K\gamma \)
-					</li>
-    		        <li class="list-group-item list-group-item-action">
-						D. \( L\alpha \)
-					</li>
-				</ul>
-    		    <ul class="list-group list-group-flush" id="4">
-					<li class="list-group-item active yo-bg-main">题目4 德拜法中有利于提高测量精度的底片安装方法是( )</li>
+					<li class="list-group-item active yo-bg-main">题目3 德拜法中有利于提高测量精度的底片安装方法是( )</li>
 					<li class="list-group-item list-group-item-action">
 						A. 正装法
 					</li>
@@ -87,8 +80,8 @@
 						D. 正装法+反装法
 					</li>
 				</ul>
-    		    <ul class="list-group list-group-flush" id="5">
-					<li class="list-group-item active yo-bg-main">题目5 测角仪中，探测器的转速与试样的转速关系是( )</li>
+    		    <ul class="list-group list-group-flush" id="4">
+					<li class="list-group-item active yo-bg-main">题目4 测角仪中，探测器的转速与试样的转速关系是( )</li>
 					<li class="list-group-item list-group-item-action">
 						A. 1:1
 					</li>
@@ -102,10 +95,10 @@
 						D. 1:0
 					</li>
 				</ul>
-    		    <ul class="list-group list-group-flush" id="6">
-					<li class="list-group-item active yo-bg-main">题目6 衍射仪法中的试样形状是( )</li>
+    		    <ul class="list-group list-group-flush" id="5">
+					<li class="list-group-item active yo-bg-main">衍射仪法中的试样形状是( )</li>
 					<li class="list-group-item list-group-item-action">
-						A. 丝状粉末多晶
+						A. 块状双晶
 					</li>
 					<li class="list-group-item list-group-item-action">
 						B. 块状粉末多晶
@@ -117,43 +110,13 @@
 						D. 任意形状
 					</li>
 				</ul>
-    		    <ul class="list-group list-group-flush" id="7">
-					<li class="list-group-item active yo-bg-main">题目7 有一倒易矢量为\( g^*=2a^*+2b^*+c^* \)，与它对应的正空间晶面为( )</li>
-					<li class="list-group-item list-group-item-action">
-						A. (220)
-					</li>
-					<li class="list-group-item list-group-item-action">
-						B. (210)
-					</li>
-					<li class="list-group-item list-group-item-action">
-						C. (221)
-					</li>
-    		        <li class="list-group-item list-group-item-action">
-						D. (110)
-					</li>
-				</ul>
-    		    <ul class="list-group list-group-flush" id="8">
-					<li class="list-group-item active yo-bg-main">题目8 有一体心立方晶体的晶格常数是\(0.286{\rm nm}\)，用铁靶\(K\alpha\;\;(\lambda K\alpha =0.194{\rm nm} ) \)照射能产生( )条衍射线</li>
-					<li class="list-group-item list-group-item-action">
-						A. 3
-					</li>
-					<li class="list-group-item list-group-item-action">
-						B. 4
-					</li>
-					<li class="list-group-item list-group-item-action">
-						C. 5
-					</li>
-    		        <li class="list-group-item list-group-item-action">
-						D. 6
-					</li>
-				</ul>
-    		    <ul class="list-group list-group-flush" id="9">
-					<li class="list-group-item active yo-bg-main">题目9 一束X射线照射到晶体表面上能否产生衍射取决于( )</li>
+    		    <ul class="list-group list-group-flush" id="6">
+					<li class="list-group-item active yo-bg-main">题目6 一束X射线照射到晶体表面上能否产生衍射取决于( )</li>
 					<li class="list-group-item list-group-item-action">
 						A. 是否满足布拉格条件
 					</li>
 					<li class="list-group-item list-group-item-action">
-						B. 是否满足衍射强度\(I\neq 0\)
+						B. 是否满足衍射强度$I\neq 0$
 					</li>
 					<li class="list-group-item list-group-item-action">
 						C. A+B
@@ -162,63 +125,65 @@
 						D. 晶体形状
 					</li>
 				</ul>
-    		    <ul class="list-group list-group-flush" id="10">
-					<li class="list-group-item active yo-bg-main">题目10 面心立方晶体的（111）晶面族的多重性因素是( )</li>
+    		    <ul class="list-group list-group-flush" id="7">
+					<li class="list-group-item active yo-bg-main">题目7 在粉末多晶衍射的照相法中不包括( )</li>
 					<li class="list-group-item list-group-item-action">
-						A. 4
+						A. 德拜法
 					</li>
 					<li class="list-group-item list-group-item-action">
-						B. 8
+						B. 聚焦法
 					</li>
 					<li class="list-group-item list-group-item-action">
-						C. 6
+						C. 平板照相法
 					</li>
     		        <li class="list-group-item list-group-item-action">
-						D. 12
+						D. 高斯法
 					</li>
 				</ul>
-    		    <ul class="list-group list-group-flush" id="11">
-					<li class="list-group-item active yo-bg-main">题目11 大直径德拜相机可以提高衍射线接受分辨率，缩短曝光时间( )</li>
+    		    <ul class="list-group list-group-flush" id="8">
+					<li class="list-group-item active yo-bg-main">题目8 衍射仪的核心是测角仪圆，的组成部件不包括( )</li>
 					<li class="list-group-item list-group-item-action">
-						A. 正确
+						A. 试样台
 					</li>
 					<li class="list-group-item list-group-item-action">
-						B. 错误
-					</li>
-				</ul>
-    		    <ul class="list-group list-group-flush" id="12">
-					<li class="list-group-item active yo-bg-main">题目12 在衍射仪法中，衍射几何包括二个圆。一个是测角仪圆，另一个是辐射源、探测器与试样三者还必须位于同一聚焦圆( )</li>
-					<li class="list-group-item list-group-item-action">
-						A. 正确
+						B. 辐射源
 					</li>
 					<li class="list-group-item list-group-item-action">
-						B. 错误
+						C. 探测器
+					</li>
+    		        <li class="list-group-item list-group-item-action">
+						D. 研磨台
 					</li>
 				</ul>
-    		    <ul class="list-group list-group-flush" id="13">
-					<li class="list-group-item active yo-bg-main">题目13 选择小的接受光栏狭缝宽度，可以提高接受分辨率，但会降低接受强度( )</li>
+    		    <ul class="list-group list-group-flush" id="9">
+					<li class="list-group-item active yo-bg-main">题目9 下列不能用做X射线探测器的有( )</li>
 					<li class="list-group-item list-group-item-action">
-						A. 正确
+						A. 正比计数器
 					</li>
 					<li class="list-group-item list-group-item-action">
-						B. 错误
-					</li>
-				</ul>
-    		    <ul class="list-group list-group-flush" id="14">
-					<li class="list-group-item active yo-bg-main">题目14 德拜法比衍射仪法测量衍射强度更精确( )</li>
-					<li class="list-group-item list-group-item-action">
-						A. 正确
+						B. 闪烁记数器
 					</li>
 					<li class="list-group-item list-group-item-action">
-						B. 错误
+						C. 半导体探测器
+					</li>
+    		        <li class="list-group-item list-group-item-action">
+						D. 光屏
 					</li>
 				</ul>
-    		     <ul class="list-group list-group-flush" id="15">
-					<li class="list-group-item active yo-bg-main">题目15 衍射仪法和德拜法一样，对试样粉末的要求是粒度均匀、大小适中，没有应力( )</li>
+    		    <ul class="list-group list-group-flush" id="10">
+					<li class="list-group-item active yo-bg-main">题目10 以下哪项参数不会影响衍射仪实验结果( )</li>
 					<li class="list-group-item list-group-item-action">
-						A. 正确
+						A. 狭缝宽度
 					</li>
-					<li class="list-group-item list-group-item-action">B. 错误</li>
+					<li class="list-group-item list-group-item-action">
+						B. 扫描速度
+					</li>
+					<li class="list-group-item list-group-item-action">
+						C. 时间常数
+					</li>
+    		        <li class="list-group-item list-group-item-action">
+						D. 电脑CPU
+					</li>
 				</ul>
 			</div>
 	
@@ -241,7 +206,7 @@
 		<script>
 			$("button").click(function() {
 				console.log(JSON.stringify(answer));
-				if(Object.keys(answer).length < 15)
+				if(Object.keys(answer).length < 10)
 				{
 					alert("有题目未选择!");
 					return 0;
