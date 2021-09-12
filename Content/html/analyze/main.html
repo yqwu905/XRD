@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			.canvasjs-chart-credit
+			{
+				display: none;
+			}
+		</style>
+		<style>
+			table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+			}
+			td,
+			th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+			}
+			tr:nth-child(even) {
+			background-color: #dddddd;
+			}
+			tr.list:hover
+			{
+				background-color: #bbbbbb;
+			}
+		</style>
+		<style>
+			body
+			{
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			
+			/* The Modal (background) */
+			.modal {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 1;
+			/* Sit on top */
+			padding-top: 100px;
+			/* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgb(0, 0, 0);
+			/* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+			}
+			
+			/* Modal Content */
+			.modal-content {
+			background-color: #fefefe;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+			}
+			
+			/* The Close Button */
+			.close {
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+		}
+		</style>
+		
+		<script src="./js/data.js"></script>
+		<script src="./js/canvasjs.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script>
+			loadSource();
+			loadGraph();
+			window.onload = function()
+			{
+				{
+					var chart = new CanvasJS.Chart("chartContainer",
+					{
+						animationEnabled: false,
+						zoomEnabled: false,
+						title:
+						{
+							text: "衍射数据图" 
+						},
+						axisX:
+						{
+							title: "2θ",
+						},
+						axisY:
+						{
+							title: "Intensity",
+							//interval: 50,
+							includeZero: true,
+							gridColor: "lightgray"
+						},
+						data: plot_data
+					});
+					chart.render();
+				}
+				
+				loadTable();
+			}
+		</script>
+		
+		<title>XRD数据分析</title>
+	</head>
+	
+	<body>
+		<div id="chartContainer" style="height: 400px; margin: auto;"></div>
+		
+		<table id="component_table"></table>
+		
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick='document.getElementById("myModal").style.display = "none";'>&times;</span>
+				<div></div>
+			</div>
+		</div>
+	</body>
+</html>
