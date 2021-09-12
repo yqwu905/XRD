@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+	<head>
+	<meta charset="UTF-8">
+		<style>
+			* {
+			  font-family: sans-serif; /* Change your font family */
+			}
+
+			.content-table {
+			  border-collapse: collapse;
+			  margin: 25px 0;
+			  font-size: 0.9em;
+			  width:  100%;
+			  /*min-width: 600px;*/
+			  border-radius: 7px 7px 0 0;
+			  overflow: hidden;
+			  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+			}
+
+			.content-table thead tr {
+			  background-color: #009879;
+			  color: #ffffff;
+			  text-align: center;
+			  font-weight: bold;
+			}
+
+			.content-table th
+			{
+			  padding: 12px 15px;
+			}
+			.content-table td {
+			  padding: 12px 15px;
+			  border: 1px solid #eeeeee;
+			}
+
+			.content-table tbody tr {
+			  border-bottom: 1px solid #dddddd;
+			}
+
+			.content-table tbody tr:nth-of-type(even) {
+			  background-color: #f3f3f3;
+			}
+
+			.content-table tbody tr:last-of-type {
+			  border-bottom: 2px solid #009879;
+			}
+
+			.content-table tbody tr.active-row {
+			  font-weight: bold;
+			  color: #009879;
+			  background-color: #ddeedd;
+			}
+			
+			textarea {
+				outline: none !important;
+				border:1.5px solid #009879;
+				box-shadow: 0 0 10px #00987930;
+				resize: vertical;
+				border-radius: 7px;
+				width: 100%;
+				min-height: 100px;
+				padding: auto,auto;
+			}
+			
+			textarea:focus {
+				box-shadow: 0 0 10px #009879a0;
+			}
+			
+			.input_button
+			{
+				text-align:center;
+				border:1.5px solid #009879;
+				box-shadow: 0 0 10px #00987930;
+				border-radius: 5px;
+				font-size : 18px;
+				margin:0px auto;
+				display:block;
+				padding: 10px 20px;
+			}
+			
+			.input_button:hover
+			{
+			  background-color: #fafafa;
+			  box-shadow: 0 0 10px #009879a0;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div style="width: 700px; margin: auto;">
+			<h2 style="text-align: center;">实验记录表</h2>
+			
+			<form action="action.php">
+				<table class="content-table">
+					<thead>
+						<tr>
+							<th></th>
+							<th>样品一</th>
+							<th>样品二</th>
+							<th>样品三</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr onClick="HighLightTR(this,'#c9cc99','cc3333');">
+							<td>起始角度(°)</td>
+							<td><input type="text" name="input_11"></td>
+							<td><input type="text" name="input_12"></td>
+							<td><input type="text" name="input_13"></td>
+						</tr>
+						<!-- <tr class="active-row"> -->
+						<tr onClick="HighLightTR(this,'#c9cc99','cc3333');">
+							<td>终止角度(°)</td>
+							<td><input type="text" name="input_21"></td>
+							<td><input type="text" name="input_22"></td>
+							<td><input type="text" name="input_23"></td>
+						</tr>
+						<tr onClick="HighLightTR(this,'#c9cc99','cc3333');">
+							<td>采样间距(°)</td>
+							<td><input type="text" name="input_31"></td>
+							<td><input type="text" name="input_32"></td>
+							<td><input type="text" name="input_33"></td>
+						</tr>
+						<tr onClick="HighLightTR(this,'#c9cc99','cc3333');">
+							<td>采样时间(s)</td>
+							<td><input type="text" name="input_41"></td>
+							<td><input type="text" name="input_42"></td>
+							<td><input type="text" name="input_43"></td>
+						</tr>
+						<tr onClick="HighLightTR(this,'#c9cc99','cc3333');">
+							<td>电压(V)</td>
+							<td><input type="text" name="input_51"></td>
+							<td><input type="text" name="input_52"></td>
+							<td><input type="text" name="input_53"></td>
+						</tr>
+						<tr onClick="HighLightTR(this,'#c9cc99','cc3333');">
+							<td>电流(A)</td>
+							<td><input type="text" name="input_61"></td>
+							<td><input type="text" name="input_62"></td>
+							<td><input type="text" name="input_63"></td>
+						</tr>
+						<tr onClick="HighLightTR(this,'#c9cc99','cc3333');">
+							<td>物质推测</td>
+							<td><input type="text" name="input_11"></td>
+							<td><input type="text" name="input_12"></td>
+							<td><input type="text" name="input_13"></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- <br> -->
+				<h2>实验心得</h2>
+				
+				<textarea name="input_text" rows="5"></textarea><br><br><br>
+				
+				<input class="input_button" type="submit" value="提交实验记录">
+				<br>
+			</form>
+			
+			<script>
+				var preEl ;
+				function HighLightTR(el)
+				{
+					if(typeof(preEl)!='undefined')
+					{
+						preEl.setAttribute("class", "");
+					}
+					el.setAttribute("class", "active-row");
+					preEl = el;
+				}
+			</script>
+		</div>
+	</body>
+	
+</html>
