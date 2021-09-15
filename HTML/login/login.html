@@ -36,6 +36,7 @@
 				$.cookie('SameSite', 'None', {secure:true});
 				$.cookie('type', 'guest', {path:'/app/XRD/HTML/', secure:true});
 				$.cookie('id', data, {path:'/app/XRD/HTML/', secure:true});
+				alert("您的游客id为:" + data);
 				$.ajaxSetup({
 					crossDomain: true,
 					xhrFields: {
