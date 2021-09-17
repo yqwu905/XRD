@@ -5,29 +5,12 @@ var page_source={};
 function loadSource()
 {
 	urlParams = new URLSearchParams(window.location.search);
-	id = urlParams.get("id");
-	if(id==null)
-	{
-		id="Al";
-	}
-	start=urlParams.get("start");
-	if(start==null)
-	{
-		start="0";
-	}
-	stop=urlParams.get("stop");
-	if(stop==null)
-	{
-		stop="100";
-	}
+	id = urlParams.get('id');
 	
 	//console.log(id);
 	
 	page_source.hit_list=HIT_LIST[URL_DICT[id]["HIT_LIST"]];
 	page_source.hit_data=HIT_DATA[URL_DICT[id]["HIT_DATA"]];
-	
-	page_source.start=parseFloat(start);
-	page_source.stop=parseFloat(stop);
 }
 
 function loadGraph()
