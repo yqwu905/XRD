@@ -16,8 +16,10 @@ struct FHitMaterial
 	GENERATED_BODY()
 	FHitMaterial()        // this is your default constructor which is required for a USTRUCT definition
 	{
+
 		// initialize things here if desired or required
 	}
+	
 	UPROPERTY(BlueprintReadWrite)
 		FString id;
 	UPROPERTY(BlueprintReadWrite)

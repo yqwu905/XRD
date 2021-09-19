@@ -117,3 +117,40 @@ TArray<FVector4> ADataCore::generateMesh(float angleStart, float angleEnd, int h
 	}
 	return meshLines;
 }
+
+TArray<FVector> ADataCore::readCIFFile(FString filename)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, filename);
+	TArray<FVector> res;
+	FString cifFile = FPaths::GameContentDir() + "data/CIF/" + filename + ".cif";
+	TArray<FString> OutTextArray;
+	TArray<FString> out;
+	if (!FFileHelper::LoadFileToStringArray(OutTextArray, *cifFile))//ÎÄ¼þ¼ì²é
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed"));
+	}
+	for (auto i : OutTextArray)
+	{
+		FRegexPattern pattern = FRegexPattern(TEXT("\\s*([a-zA-Z]+)\\s+[a-zA-Z0-9]+\\s+[0-9]+\\s+([0-9.]+)\\s+([0-9.]+)\\s+([0-9.]+)"));
+		FRegexMatcher r = FRegexMatcher(pattern, i);
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, i);
+		if (r.FindNext())
+		{
+			//out.Add(i);
+			int32 b = r.GetMatchBeginning();
+			int32 e = r.GetMatchEnding();
+			if (e > 3)
+			{
+				res.Add(FVector(FCString::Atof(*r.GetCaptureGroup(2)), FCString::Atof(*r.GetCaptureGroup(3)), FCString::Atof(*r.GetCaptureGroup(4))));
+			}
+			//for (auto j = b + 1; j < e; ++j)
+			//{
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, r.GetCaptureGroup(j));
+				//if (!r.GetCaptureGroup(j).TrimStartAndEnd().IsEmpty())
+					//out.Add(r.GetCaptureGroup(j));
+				//FCString::Atoi(r.GetCaptureGroup(j));
+			//}
+		}
+	}
+	return res;
+}
